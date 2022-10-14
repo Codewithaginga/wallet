@@ -1,24 +1,29 @@
-#wallet
+from itertools import permutations
+import random
 
 
 class Bank:
     pin = 7446
     balance = 568_345
-    loan_limit = 123_567
+    loan_limit = 723_567
     deposit_limit_per_day = 1_000_000
-    second_factor_authentication_on_your_phone = 7446
 
     @staticmethod
     def service():
+        card_pin = int(input('Enter pin: ' '\n'))
 
-        pin = int(input('Enter pin: ' '\n'))
+        num = ['1', '2', '3', '5', '6', '7', '8', '9', '0']
+        second_authentication = ''
+        for i in range(4):
+            second_authentication = second_authentication + random.choices(num)[0]
+        print(second_authentication)
 
-        pin1 = int(input('Enter pin from your phone to access your account: ' '\n'))
-        if pin1 != Bank.second_factor_authentication_on_your_phone:
+        pin1 = input('Enter pin from your phone to access your account: ' '\n')
+        if pin1 != second_authentication:
             b = Bank()
             b.service()
 
-        if pin != Bank.pin:
+        elif Bank.pin != card_pin:
 
             b = Bank()
             b.service()
